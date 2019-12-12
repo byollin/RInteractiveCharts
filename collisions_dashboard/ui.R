@@ -1,0 +1,102 @@
+tagList(useShinyjs(),
+        navbar_page(theme = shinytheme('yeti'), id = 'navbar', windowTitle = 'Seattle Vision Zero',
+                    title = div(id = 'safety',
+                                img(src = 'city_of_seattle_logo_small.png', height = 56, width = 56,
+                                    style = 'margin-top: -10px; vertical-align: top;'),
+                                'Seattle Vision Zero'),
+                    inputs = radioGroupButtons('page', label = '', choices = c('Dashboard', 'Map'),
+                                               selected = c('Dashboard'), status = 'primary'),
+    # controls panel ###############################################################################
+    fixedPanel(top = 0, left = 0, width = 400, height = '100%',
+        tags$head(tags$link(rel = 'stylesheet', type = 'text/css', href = 'styles.css')),
+        tags$head(tags$link(rel = 'stylesheet', type = 'text/css',
+                            href = 'ion.rangeSlider.skinSquare.css')),
+        wellPanel(id = 'controls', draggable = FALSE,
+            br(),
+            p("What if each of us asked ourselves: what would be an acceptable number of traffic deaths for my family?
+            The answer is zero. You wouldn't even think twice about it. Now take that to the next level - what's an acceptable number for your neighborhood? For our city?
+            Explore Seattle's progress toward Vision Zero; an ambitious plan to end traffic deaths and serious injuries by 2030."),
+            input_ui('date',
+                dateRangeInput('date', 'Date range:', min = '2004-01-01', max = '2019-10-31',
+                               start = '2019-01-01', end = '2019-10-31'),
+                help = 'Analyze collisions occuring between the selected start and end dates.'
+            ),
+            input_ui('agg',
+                radioGroupButtons('agg', 'Date aggregation:',
+                                  choices = list('Day' = 'INCDATE', 'Week' = 'INCWEEK',
+                                                 'Month' = 'INCMONTH', 'Quarter' = 'INCQUAR',
+                                                 'Year' = 'INCYEAR'),
+                                  selected = list('Month' = 'INCMONTH'), status = 'info', size = 'xs',
+                                  justified = TRUE),
+                help = 'Choose a level of aggregation to see in charts.'
+            ),
+            input_ui('severity',
+                pickerInput('severity', 'Severity:',
+                            choices = c('Property Damage Only Collision', 'Injury Collision',
+                                        'Serious Injury Collision', 'Fatality Collision', 'Unknown'),
+                            width = '100%', multiple = TRUE,
+                            options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, size = 10,
+                                                    selectOnTab = TRUE, noneSelectedText = 'Not active',
+                                                    style = 'primary')),
+                help = 'Filter collisions by one or more severity types.'
+            ),
+            input_ui('circumstances',
+                pickerInput('circumstances', 'Circumstances:',
+                            choices = list('Distracted driving' = 'DISTRACTED',
+                                           'Under the influence' = 'UNDER_THE_INFLUENCE',
+                                           'Speeding' = 'SPEEDING', 'Inclement weather' = 'INCLEMENT_WEATHER',
+                                           'Hazardous road conditions' = 'HAZARDOUS_ROAD_CONDITIONS',
+                                           'Low light' = 'LOW_LIGHT', 'No contributing circumstances' = 'NONE'),
+                            width = '100%', multiple = TRUE,
+                            options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, size = 10,
+                                                    selectOnTab = TRUE, noneSelectedText = 'Not active',
+                                                    style = 'primary')),
+                help = 'Filter collisions by one or more contributing circumstances. A collision may have many contributing circumstances.'
+            ),
+            input_ui('involving',
+                pickerInput('involving', 'Involving:',
+                            choices = list('Pedestrian' = 'PEDESTRIAN_INVOLVED', 'Cyclist' = 'CYCLIST_INVOLVED',
+                                           'Vehicle Only' = 'VEHICLE_ONLY'),
+                            width = '100%', multiple = TRUE,
+                            options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, size = 10,
+                                                    selectOnTab = TRUE, noneSelectedText = 'Not active',
+                                                    style = 'primary')),
+                help = 'Filter collisions by road users involved.'
+            )
+    )),
+    conditionalPanel(condition = 'input.page == "Dashboard"',               
+        div(id = 'Dashboard', div(class = 'outer',
+            column(6, style = 'padding: 0; height: 50%;',
+                column(12, style = 'padding: 0; height: 50%;',
+                    metric_ui('Total Collisions', textOutput('total_collisions_desc', inline = TRUE),
+                              textOutput('total_collisions')),
+                    metric_ui('Fatalities', textOutput('fatalities_desc', inline = TRUE),
+                              textOutput('fatalities'))
+                ),
+                column(12, style = 'padding: 0; height: 50%;',
+                    metric_ui('Injuries', textOutput('injuries_desc', inline = TRUE),
+                              textOutput('injuries')),
+                    metric_ui('Serious Injuries', textOutput('serious_injuries_desc', inline = TRUE),
+                              textOutput('serious_injuries'))
+                )
+            ),
+            chart_ui(6, 'Total Collisions over Time', htmlOutput('ts_collisions_desc', inline = TRUE), 
+                billboarderOutput('ts_collisions', height = '100%')),
+            chart_ui(4, 'Collisions by Road User', htmlOutput('ts_mode_desc', inline = TRUE), 
+                     billboarderOutput('ts_mode', height = '100%')),
+            chart_ui(4, 'Collisions by Severity', 'Total collisions by severity',
+                     billboarderOutput('donut_severity', height = '100%')),
+            chart_ui(4, 'Collisions by Intersection', '10 most collision prone intersections', 
+                     DT::dataTableOutput('table_intersections', height = '100%')),
+        ))
+    ),
+    conditionalPanel(condition = 'input.page == "Map"',
+        div(id = 'Map',
+            # map panel ########################################################################################
+            div(class = 'outer',
+                leafletOutput('map', width = '100%', height = '100%'),
+                div(id = 'spinner', div() %>% withSpinner(type = 8, proxy.height = '400px', color = '#33acdc'))
+            )  
+        )
+    )
+))

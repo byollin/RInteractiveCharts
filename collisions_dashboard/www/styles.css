@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+div[id^='sparkline_'] {
+    overflow: visible !important;
+}
+
+.outer {
+    position: fixed;
+    top: 60px;
+    left: 400px;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.row {
+    margin: 10px;
+}
+
+.outside-min-zoom {
+    color: #d3d3d3;
+}
+
+.btn.btn-circle-xs {
+    padding: 0;
+    margin: 0;
+}
+
+.col-sm-1 {
+    line-height: 0.5;
+}
+
+.legend i {
+    opacity: 1;
+}
+
+.info {
+    background: #ffffff00;
+    box-shadow: none;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+
+label, .control-label, .help-block, .checkbox, .radio {
+    margin-bottom: 10px;
+}
+
+.open > .dropdown-menu {
+    padding: 4px 0 0 0;
+}
+
+/* navbar ########################################################################################################### */
+
+.navbar {
+    background: url('network.png');
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: -200px;
+    background-color: white;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+    min-height: 60px;
+}
+
+.navbar-default .navbar-brand {
+    color: #777;
+}
+
+.navbar-brand {
+    font-size: 40px;
+    line-height: 32px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #777;
+    text-shadow: #999 0 0 1em;
+}
+
+.navbar-default .navbar-nav > li > a {
+    display: none;
+}
+
+#page {
+    position: fixed;
+    top: 0;
+}
+
+.btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary,
+.btn-primary:active:hover, .btn-primary.active:hover, .open>.dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus, .btn-primary.active:focus, .open>.dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus, .btn-primary.active.focus, .open>.dropdown-toggle.btn-primary.focus {
+    background-color: #ffffff00;
+    border-color: #ffffff00;
+    box-shadow: none;
+    height: 60px;
+    color: #607D8B;
+    font-size: larger;
+    font-weight: 400;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+    background-color: #ffffff00;
+    border-color: #ffffff00;
+    box-shadow: none;
+    height: 60px;
+    color: #607D8B;
+    font-size: larger;
+    font-weight: 400; 
+}
+
+/* collapse panel ################################################################################################### */
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+.panel {
+    margin-bottom: 0;
+    border: none;
+}
+
+.panel-group .panel+.panel {
+    background-color: #ffffff00;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #ffffff00;
+    color: #33acdc;
+    border-bottom: 1px solid
+}
+
+.panel-heading {
+    padding: 0;
+	border:0;
+}
+
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   font-size: x-small;
+   content: "\e114";
+   float: right;
+   margin-top: 10px;
+   margin-right: 22px;
+   transition: all 0.5s;
+}
+
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
+
+.panel-title {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 2;
+}
+
+.panel-title > a, .panel-title > a:active {
+    padding: 6px;
+}
+
+.panel-body {
+    padding: 20px 0px 10px 0px;
+}
+
+/* custom marker clusters ########################################################################################### */
+
+.marker-cluster-medium-large {
+	background-color: rgba(255, 165, 75, 0.6);
+}
+
+.marker-cluster-medium-large div {
+	background-color: rgba(255, 128, 0, 0.6);
+}
+
+.marker-cluster-large {
+	background-color: rgba(252, 62, 59, 0.6) !important;
+}
+
+.marker-cluster-large div {
+	background-color: rgba(206, 19, 19, 0.6) !important;
+}
+
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+}
+
+/* custome scrollbar (chrome only) ################################################################################## */
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff00; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #beddee;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #008cba; 
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pretty .state label {
+    font-size: larger;
+}
+
+.nav-pills > li {
+    background: aliceblue;
+}
+
+.nav-pills > li + li {
+    background: aliceblue;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background: #beddee;
+}
+
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+    font-size: smaller;
+}
+
+.form-group {
+    margin-bottom: 10px;    
+}
+
+.btn-default {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    border-color: #cccccc;
+}
+
+.form-group .bootstrap-select, .form-horizontal .bootstrap-select, .form-inline .bootstrap-select {
+    border: 1px solid #cccccc;
+}
+
+.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+    top: 12px;
+}
+
+p {
+    margin-bottom: 9px;
+}
+
+/* do not underline icon on hover or when clicked */
+
+.panel {
+    box-shadow: none;
+}
+
+.slider-animate-button .play {
+    display: block;
+    margin-top: -18px;
+    color: #2b376e;
+}
+
+.slider-animate-button.playing .pause {
+    display: block;
+    margin-top: -18px;
+    color: #2b376e;
+}
+
+.btn-group-justified>.btn, .btn-group-justified>.btn-group {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    margin-top: 8px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.popover {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+    min-width: 300px;
+}
+
+
+#spinner{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 400px;
+}
+
+body, label, input, button, select, td, th, tr { 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+}
+
+body, td, th, tr {
+    font-size: 10pt;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+
+.table > thead > tr > td,
+.table > thead > tr > th {
+    font-weight: bold;
+}
+
+.legend {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+}
+
+#controls {
+    min-height: 98%;
+    max-height: 98%;
+    margin-top: 40px;
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+    background-image: url(seattle_skyline_light.png);
+    background-position-x: center;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#padded_div {
+    padding: 0 0 80px 0;
+}
+
+#layers_div {
+    min-height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+    min-height: -moz-available;
+    max-height: -moz-available;
+    overflow-y: auto;
+}
+
+#display {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+#cite {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+}
+
+#card {
+    padding: 0;
+    height: -webkit-fill-available;
+    background: white;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.leaflet-container {
+    background-color: white !important;
+}
+
+/* leaflet */
+
+.leaflet-container {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 1px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    right: 4px;
+}
+
+.leaflet-popup-content {
+    margin: 2px;
+}

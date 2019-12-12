@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<pubdate>20180402</pubdate>
+<title>2016 Flow Counts</title>
+<onlink>https://gisdata.seattle.gov/server/rest/services/SDOT/SDOT_Traffic_Volume/MapServer/9</onlink>
+<onlink>https://www.seattle.gov/Documents/Departments/SDOT/GIS/2016_Traffic_Flow_Counts_OD.pdf</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>Vehicle traffic volumes for arterial streets in Seattle based on spot studies that have been adjusted for seasonal variation.  | Attribute Information: https://www.seattle.gov/Documents/Departments/SDOT/GIS/2016_Traffic_Flow_Counts_OD.pdf | Update Cycle: As Needed | Contact Email: DOT_IT_GIS@seattle.gov</abstract>
+<purpose>2016 Traffic Flow Counts in Seattle.</purpose>
+</descript>
+<status>
+<progress>Complete</progress>
+<update>As needed</update>
+</status>
+<spdom>
+<bounding>
+<westbc>-122.4754</westbc>
+<eastbc>-122.2008</eastbc>
+<northbc>47.7582</northbc>
+<southbc>47.4814</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>ISO 19115 Topic Categories</themekt>
+<themekey>transportation</themekey>
+</theme>
+<theme>
+<themekt>None</themekt>
+<themekey>Flow</themekey>
+<themekey>Volume</themekey>
+<themekey>Traffic</themekey>
+<themekey>Transportation</themekey>
+<themekey>GIS</themekey>
+<themekey>SDOT</themekey>
+<themekey>Seattle</themekey>
+<themekey>WA</themekey>
+<themekey>Counts</themekey>
+<themekey>2016</themekey>
+<themekey>018</themekey>
+</theme>
+</keywords>
+<accconst>None</accconst>
+<useconst>PDDL | This item is meant for public access and use.  The City of Seattle makes no representation or warranty as to its accuracy.Important | The City of Seattle has created this service for our GIS Open Data website.  We do reserve the right to alter, suspend, re-host, or retire this service at any time and without notice.  GIS staff will provide notification of changes via the Comments RSS capability in ArcGIS Online.</useconst>
+<ptcontac>
+<cntinfo>
+<cntorgp>
+<cntorg>Seattle IT</cntorg>
+<cntper>SDOT</cntper>
+</cntorgp>
+<cntpos>Senior GIS Analyst</cntpos>
+<cntaddr>
+<addrtype>mailing and physical</addrtype>
+<city>Seattle</city>
+<state>WA</state>
+<postal>98104</postal>
+</cntaddr>
+<cntemail>DOT_IT_GIS@seattle.gov</cntemail>
+</cntinfo>
+</ptcontac>
+<datacred>Seattle Dept of Transportation, multiple Divisions.</datacred>
+</idinfo>
+<metainfo>
+<metd>20180402</metd>
+<metc>
+<cntinfo>
+<!--no contact person or organization name available-->
+</cntinfo>
+</metc>
+<metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+<metstdv>FGDC-STD-001-1998</metstdv>
+<mettc>local time</mettc>
+</metainfo>
+</metadata>

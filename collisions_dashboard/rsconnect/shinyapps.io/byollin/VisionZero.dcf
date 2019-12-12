@@ -1,0 +1,13 @@
+name: VisionZero
+title: VisionZero
+username:
+account: byollin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1592341
+bundleId: 2661022
+url: https://byollin.shinyapps.io/VisionZero/
+when: 1576127709.85412
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Dockerfile|data/.DS_Store|data/read.R

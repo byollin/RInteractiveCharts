@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20190605</CreaDate><CreaTime>12144900</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.4\ArcToolbox\Toolboxes\Data Management Tools.tbx\CalculateField" Date="20190523" Time="134845">CalculateField "ACS 2017 5-Year Estimates\Commute Mode\Walk or Bike" WALK_OR_BIKE "[WALK] + [BICYCLE]" VB #</Process></lineage></DataProperties></Esri></metadata>

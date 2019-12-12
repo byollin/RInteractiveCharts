@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
+html.remark-container, body.remark-container {
+  padding: 0;
+}
+
+.title-slide h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+.title-slide h2, .title-slide h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.title-slide {
+  background-color: #b1d65c;
+  background-image: url('../images/green-dust-and-scratches.png');
+  background-repeat: repeat;
+  border-left-color: #669900;
+}
+
+.remark-slide {
+  background-color: #b1d65c;
+  background-image: url('../images/leaf.jpg');
+  background-size: contain;
+}
+
+.remark-slide-content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.bg-main1 {
+  background-color: #b1d65c;
+  background-image: url('../images/green-dust-and-scratches.png');
+}
+
+.bg-main2 {
+  background-color: #b1d65c;
+}
+
+.with-thick-border >.column:nth-of-type(n+2) {
+  border-left-color: #669900;
+}
+
+.sliderbox {
+  background-color: #b1d65c;
+}
+
+.content {
+  padding-right: 10px;
+}
+
+.content > h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.content > h1, h2, h3, h4, h5, h6, h7, h8, p, body {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.content > h2, h3, h4, h5, h6, h7, h8, p, body {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 100;
+}
+
+ul {
+  line-height: 1.6;
+  font-size: x-large;
+}
+
+.remark-code, .remark-inline-code {
+  color: #9c27b0;
+  font-size: smaller;
+}
+
+.remark-code {
+  font-size: 14px;
+}
+
+.remark-slide-content .center > img {
+  width: 60%;
+}
