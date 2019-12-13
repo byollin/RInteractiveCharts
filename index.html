@@ -12,13 +12,6 @@
     <script src="libs/billboarder-binding-0.2.6.950/billboarder.js"></script>
     <link href="libs/billboard-theme-1.10.0/billboard.min.css" rel="stylesheet" />
     <script src="libs/jquery-1.12.4/jquery.min.js"></script>
-    <link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
-    <script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
-    <script src="libs/dygraphs-1.1.1/shapes.js"></script>
-    <script src="libs/moment-2.8.4/moment.js"></script>
-    <script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
-    <script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
-    <script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
     <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
     <script src="libs/datatables-binding-0.10.6/datatables.js"></script>
     <link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -153,7 +146,7 @@ class: split-33 with-thick-border
 ```r
 src = 'https://opendata.arcgis.com/datasets/5b5c745e0f1f48e7a53acec63a0022ab_0.csv'
 x = readr::read_csv(src) %&gt;%
-      filter(INCDATE &gt;= '2004-01-01', INCDATE &lt;= '2019-10-31')
+  filter(INCDATE &gt;= '2004-01-01', INCDATE &lt;= '2019-10-31')
 x
 ```
 
@@ -161,16 +154,16 @@ x
 ## # A tibble: 214,822 x 40
 ##        X     Y OBJECTID INCKEY COLDETKEY REPORTNO STATUS ADDRTYPE INTKEY
 ##    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;
-##  1 -122.  47.7        1 316519    318019 3811255  Unmat… Block        NA
-##  2 -122.  47.7        2 316389    317889 3767500  Match… Block        NA
-##  3 -122.  47.6        3 316384    317884 3750506  Match… Block        NA
-##  4 -122.  47.6        4 316498    317998 3643714  Match… Block        NA
-##  5 -122.  47.5        5 316515    318015 3750653  Unmat… Block        NA
-##  6 -122.  47.7        6 316522    318022 3811259  Unmat… Block        NA
-##  7   NA   NA          7 316527    318027 3811267  Match… &lt;NA&gt;         NA
-##  8 -122.  47.7        8 316517    318017 3750657  Unmat… Block        NA
-##  9 -122.  47.6        9 316386    317886 3752460  Match… Block        NA
-## 10 -122.  47.6       10 316505    318005 3643716  Match… Interse…  29576
+##  1 -122.  47.7     1001   1313      1313 3501630  Match… Block        NA
+##  2 -122.  47.6     1002   1312      1312 3476309  Match… Interse…  30138
+##  3 -122.  47.6     1003   1311      1311 2606572  Match… Block        NA
+##  4 -122.  47.6     1004  20500     20500 1788144  Match… Block        NA
+##  5 -122.  47.7     1005   1310      1310 3507863  Match… Interse…  37116
+##  6 -122.  47.7     1006  20400     20400 1220377  Match… Block        NA
+##  7 -122.  47.6     1007  20300     20300 1069351  Match… Interse…  29121
+##  8 -122.  47.6     1008  20200     20200 1214098  Match… Block        NA
+##  9 -122.  47.7     1009   1309      1309 3507768  Match… Block        NA
+## 10 -122.  47.6     1010   1246      1246 3643905  Match… Block        NA
 ## # … with 214,812 more rows, and 31 more variables: LOCATION &lt;chr&gt;,
 ## #   EXCEPTRSNCODE &lt;chr&gt;, EXCEPTRSNDESC &lt;chr&gt;, SEVERITYCODE &lt;chr&gt;,
 ## #   SEVERITYDESC &lt;chr&gt;, COLLISIONTYPE &lt;chr&gt;, PERSONCOUNT &lt;dbl&gt;,
@@ -220,7 +213,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Time series charts are good for understanding trends for one or more variables over time
-  * There are several libraries that plot time-series data well including: `highcharter`, `billboarder` and `dygraphs`
+  * There are several libraries that plot time-series data well including: `highcharter` and `billboarder`
   * Use `highcharter::hchart()` similar to `ggplot2::qplot()`
   * Use `highcharter::hcaes()` much like `ggplot2::aes()`
 
@@ -232,8 +225,8 @@ hchart(y, type = 'line', hcaes(x = INCMONTH, y = CNT), name = 'Collisions',
        color = '#669900')
 ```
 
-<div id="htmlwidget-9d3fc5e0369084990b36" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9d3fc5e0369084990b36">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-5.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-172140b21d4e117afdef" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-172140b21d4e117afdef">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-5.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -264,8 +257,8 @@ highchart() %&gt;% hc_xAxis(type = 'datetime') %&gt;%
                 name = 'Moving Average', color = '#333333')
 ```
 
-<div id="htmlwidget-4d811813984cfe2e89a9" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4d811813984cfe2e89a9">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-7.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-13875dca6ad3905ac038" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13875dca6ad3905ac038">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-7.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -293,25 +286,22 @@ billboarder() %&gt;% bb_linechart(data = y) %&gt;%
   bb_legend(show = FALSE)
 ```
 
-<div id="htmlwidget-deab0dda7450373f2d38" style="width:100%;height:200px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-deab0dda7450373f2d38">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"axis":{"x":{"type":"timeseries","tick":{"format":"%b %Y","fit":true}}},"data":{"x":"INCMONTH","json":{"INCMONTH":["2004-01-01","2004-02-01","2004-03-01","2004-04-01","2004-05-01","2004-06-01","2004-07-01","2004-08-01","2004-09-01","2004-10-01","2004-11-01","2004-12-01","2005-01-01","2005-02-01","2005-03-01","2005-04-01","2005-05-01","2005-06-01","2005-07-01","2005-08-01","2005-09-01","2005-10-01","2005-11-01","2005-12-01","2006-01-01","2006-02-01","2006-03-01","2006-04-01","2006-05-01","2006-06-01","2006-07-01","2006-08-01","2006-09-01","2006-10-01","2006-11-01","2006-12-01","2007-01-01","2007-02-01","2007-03-01","2007-04-01","2007-05-01","2007-06-01","2007-07-01","2007-08-01","2007-09-01","2007-10-01","2007-11-01","2007-12-01","2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01","2011-01-01","2011-02-01","2011-03-01","2011-04-01","2011-05-01","2011-06-01","2011-07-01","2011-08-01","2011-09-01","2011-10-01","2011-11-01","2011-12-01","2012-01-01","2012-02-01","2012-03-01","2012-04-01","2012-05-01","2012-06-01","2012-07-01","2012-08-01","2012-09-01","2012-10-01","2012-11-01","2012-12-01","2013-01-01","2013-02-01","2013-03-01","2013-04-01","2013-05-01","2013-06-01","2013-07-01","2013-08-01","2013-09-01","2013-10-01","2013-11-01","2013-12-01","2014-01-01","2014-02-01","2014-03-01","2014-04-01","2014-05-01","2014-06-01","2014-07-01","2014-08-01","2014-09-01","2014-10-01","2014-11-01","2014-12-01","2015-01-01","2015-02-01","2015-03-01","2015-04-01","2015-05-01","2015-06-01","2015-07-01","2015-08-01","2015-09-01","2015-10-01","2015-11-01","2015-12-01","2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01"],"CNT":[1167,1060,1218,1254,1320,1287,1275,1361,1262,1443,1336,1444,1192,1080,1333,1349,1395,1372,1396,1346,1304,1447,1417,1385,1434,1232,1229,1307,1276,1327,1281,1318,1285,1356,1519,1230,1325,1036,1275,1140,1297,1331,1304,1266,1244,1398,1270,1196,1207,1024,1182,1193,1187,1153,1134,1259,1153,1302,1203,1142,984,882,1059,1067,1283,1192,1205,1092,1082,1299,1128,1002,998,950,944,902,977,1003,1026,1055,966,1176,1037,924,1022,860,1075,1030,1051,1127,1029,1007,1060,1070,1059,1026,936,880,1061,1042,1107,1033,1035,1137,1038,1258,1088,1117,1031,880,985,1123,1130,1113,1129,1131,1079,1076,1108,972,987,942,1051,1074,1160,1066,1155,1152,1108,1283,1123,1111,1107,1004,1133,1164,1154,1258,1251,1243,1228,1285,1226,1207,1162,1089,1169,1076,1113,1213,1126,1219,1141,1355,1080,1158,985,886,1028,962,1117,1028,1047,991,1088,1141,1102,1101,1125,912,998,919,1048,1008,1064,987,957,1091,1025,1062,930,764,870,931,1029,1007,999,908,807,936]},"types":{"CNT":"line"}},"point":{"show":false},"subchart":{"show":true,"size":{"height":30},"axis":{"x":{"show":false}}},"legend":{"show":false}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b8119682516ddced5a9f" style="width:100%;height:200px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8119682516ddced5a9f">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"axis":{"x":{"type":"timeseries","tick":{"format":"%b %Y","fit":true}}},"data":{"x":"INCMONTH","json":{"INCMONTH":["2004-01-01","2004-02-01","2004-03-01","2004-04-01","2004-05-01","2004-06-01","2004-07-01","2004-08-01","2004-09-01","2004-10-01","2004-11-01","2004-12-01","2005-01-01","2005-02-01","2005-03-01","2005-04-01","2005-05-01","2005-06-01","2005-07-01","2005-08-01","2005-09-01","2005-10-01","2005-11-01","2005-12-01","2006-01-01","2006-02-01","2006-03-01","2006-04-01","2006-05-01","2006-06-01","2006-07-01","2006-08-01","2006-09-01","2006-10-01","2006-11-01","2006-12-01","2007-01-01","2007-02-01","2007-03-01","2007-04-01","2007-05-01","2007-06-01","2007-07-01","2007-08-01","2007-09-01","2007-10-01","2007-11-01","2007-12-01","2008-01-01","2008-02-01","2008-03-01","2008-04-01","2008-05-01","2008-06-01","2008-07-01","2008-08-01","2008-09-01","2008-10-01","2008-11-01","2008-12-01","2009-01-01","2009-02-01","2009-03-01","2009-04-01","2009-05-01","2009-06-01","2009-07-01","2009-08-01","2009-09-01","2009-10-01","2009-11-01","2009-12-01","2010-01-01","2010-02-01","2010-03-01","2010-04-01","2010-05-01","2010-06-01","2010-07-01","2010-08-01","2010-09-01","2010-10-01","2010-11-01","2010-12-01","2011-01-01","2011-02-01","2011-03-01","2011-04-01","2011-05-01","2011-06-01","2011-07-01","2011-08-01","2011-09-01","2011-10-01","2011-11-01","2011-12-01","2012-01-01","2012-02-01","2012-03-01","2012-04-01","2012-05-01","2012-06-01","2012-07-01","2012-08-01","2012-09-01","2012-10-01","2012-11-01","2012-12-01","2013-01-01","2013-02-01","2013-03-01","2013-04-01","2013-05-01","2013-06-01","2013-07-01","2013-08-01","2013-09-01","2013-10-01","2013-11-01","2013-12-01","2014-01-01","2014-02-01","2014-03-01","2014-04-01","2014-05-01","2014-06-01","2014-07-01","2014-08-01","2014-09-01","2014-10-01","2014-11-01","2014-12-01","2015-01-01","2015-02-01","2015-03-01","2015-04-01","2015-05-01","2015-06-01","2015-07-01","2015-08-01","2015-09-01","2015-10-01","2015-11-01","2015-12-01","2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01"],"CNT":[1167,1060,1218,1254,1320,1287,1275,1361,1262,1443,1336,1444,1192,1080,1333,1349,1395,1372,1396,1346,1304,1447,1417,1385,1434,1232,1229,1307,1276,1327,1281,1318,1285,1356,1519,1230,1325,1036,1275,1140,1297,1331,1304,1266,1244,1398,1270,1196,1207,1024,1182,1193,1187,1153,1134,1259,1153,1302,1203,1142,984,882,1059,1067,1283,1192,1205,1092,1082,1299,1128,1002,998,950,944,902,977,1003,1026,1055,966,1176,1037,924,1022,860,1075,1030,1051,1127,1029,1007,1060,1070,1059,1026,936,880,1061,1042,1107,1033,1035,1137,1038,1258,1088,1117,1031,880,985,1123,1130,1113,1129,1131,1079,1076,1108,972,987,942,1051,1074,1160,1066,1155,1152,1108,1283,1123,1111,1107,1004,1133,1164,1154,1258,1251,1243,1228,1285,1226,1207,1162,1089,1169,1076,1113,1213,1126,1219,1141,1355,1080,1158,985,886,1028,962,1117,1028,1047,991,1088,1141,1102,1101,1125,912,998,919,1048,1008,1064,987,957,1091,1025,1062,930,764,870,931,1029,1007,999,908,807,936]},"types":{"CNT":"line"}},"point":{"show":false},"subchart":{"show":true,"size":{"height":30},"axis":{"x":{"show":false}}},"legend":{"show":false}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 
 
 ```r
 y = xts::xts(x = y$CNT, order.by = y$INCMONTH)
-names(y) = c('Collisions')
-dygraph(y) %&gt;% dyRangeSelector() %&gt;% dyLegend(show = "follow")
+hchart(y, name = 'Collisions')
 ```
 
-<div id="htmlwidget-3f5f3e1d3912573c9098" style="width:100%;height:200px;" class="dygraphs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3f5f3e1d3912573c9098">{"x":{"attrs":{"labels":["month","Collisions"],"retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60}},"showRangeSelector":true,"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel","legend":"follow","labelsDivWidth":250,"labelsShowZeroValues":true,"labelsSeparateLines":false,"hideOverlayOnMouseOut":true},"scale":"monthly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["2004-01-01T00:00:00.000Z","2004-02-01T00:00:00.000Z","2004-03-01T00:00:00.000Z","2004-04-01T00:00:00.000Z","2004-05-01T00:00:00.000Z","2004-06-01T00:00:00.000Z","2004-07-01T00:00:00.000Z","2004-08-01T00:00:00.000Z","2004-09-01T00:00:00.000Z","2004-10-01T00:00:00.000Z","2004-11-01T00:00:00.000Z","2004-12-01T00:00:00.000Z","2005-01-01T00:00:00.000Z","2005-02-01T00:00:00.000Z","2005-03-01T00:00:00.000Z","2005-04-01T00:00:00.000Z","2005-05-01T00:00:00.000Z","2005-06-01T00:00:00.000Z","2005-07-01T00:00:00.000Z","2005-08-01T00:00:00.000Z","2005-09-01T00:00:00.000Z","2005-10-01T00:00:00.000Z","2005-11-01T00:00:00.000Z","2005-12-01T00:00:00.000Z","2006-01-01T00:00:00.000Z","2006-02-01T00:00:00.000Z","2006-03-01T00:00:00.000Z","2006-04-01T00:00:00.000Z","2006-05-01T00:00:00.000Z","2006-06-01T00:00:00.000Z","2006-07-01T00:00:00.000Z","2006-08-01T00:00:00.000Z","2006-09-01T00:00:00.000Z","2006-10-01T00:00:00.000Z","2006-11-01T00:00:00.000Z","2006-12-01T00:00:00.000Z","2007-01-01T00:00:00.000Z","2007-02-01T00:00:00.000Z","2007-03-01T00:00:00.000Z","2007-04-01T00:00:00.000Z","2007-05-01T00:00:00.000Z","2007-06-01T00:00:00.000Z","2007-07-01T00:00:00.000Z","2007-08-01T00:00:00.000Z","2007-09-01T00:00:00.000Z","2007-10-01T00:00:00.000Z","2007-11-01T00:00:00.000Z","2007-12-01T00:00:00.000Z","2008-01-01T00:00:00.000Z","2008-02-01T00:00:00.000Z","2008-03-01T00:00:00.000Z","2008-04-01T00:00:00.000Z","2008-05-01T00:00:00.000Z","2008-06-01T00:00:00.000Z","2008-07-01T00:00:00.000Z","2008-08-01T00:00:00.000Z","2008-09-01T00:00:00.000Z","2008-10-01T00:00:00.000Z","2008-11-01T00:00:00.000Z","2008-12-01T00:00:00.000Z","2009-01-01T00:00:00.000Z","2009-02-01T00:00:00.000Z","2009-03-01T00:00:00.000Z","2009-04-01T00:00:00.000Z","2009-05-01T00:00:00.000Z","2009-06-01T00:00:00.000Z","2009-07-01T00:00:00.000Z","2009-08-01T00:00:00.000Z","2009-09-01T00:00:00.000Z","2009-10-01T00:00:00.000Z","2009-11-01T00:00:00.000Z","2009-12-01T00:00:00.000Z","2010-01-01T00:00:00.000Z","2010-02-01T00:00:00.000Z","2010-03-01T00:00:00.000Z","2010-04-01T00:00:00.000Z","2010-05-01T00:00:00.000Z","2010-06-01T00:00:00.000Z","2010-07-01T00:00:00.000Z","2010-08-01T00:00:00.000Z","2010-09-01T00:00:00.000Z","2010-10-01T00:00:00.000Z","2010-11-01T00:00:00.000Z","2010-12-01T00:00:00.000Z","2011-01-01T00:00:00.000Z","2011-02-01T00:00:00.000Z","2011-03-01T00:00:00.000Z","2011-04-01T00:00:00.000Z","2011-05-01T00:00:00.000Z","2011-06-01T00:00:00.000Z","2011-07-01T00:00:00.000Z","2011-08-01T00:00:00.000Z","2011-09-01T00:00:00.000Z","2011-10-01T00:00:00.000Z","2011-11-01T00:00:00.000Z","2011-12-01T00:00:00.000Z","2012-01-01T00:00:00.000Z","2012-02-01T00:00:00.000Z","2012-03-01T00:00:00.000Z","2012-04-01T00:00:00.000Z","2012-05-01T00:00:00.000Z","2012-06-01T00:00:00.000Z","2012-07-01T00:00:00.000Z","2012-08-01T00:00:00.000Z","2012-09-01T00:00:00.000Z","2012-10-01T00:00:00.000Z","2012-11-01T00:00:00.000Z","2012-12-01T00:00:00.000Z","2013-01-01T00:00:00.000Z","2013-02-01T00:00:00.000Z","2013-03-01T00:00:00.000Z","2013-04-01T00:00:00.000Z","2013-05-01T00:00:00.000Z","2013-06-01T00:00:00.000Z","2013-07-01T00:00:00.000Z","2013-08-01T00:00:00.000Z","2013-09-01T00:00:00.000Z","2013-10-01T00:00:00.000Z","2013-11-01T00:00:00.000Z","2013-12-01T00:00:00.000Z","2014-01-01T00:00:00.000Z","2014-02-01T00:00:00.000Z","2014-03-01T00:00:00.000Z","2014-04-01T00:00:00.000Z","2014-05-01T00:00:00.000Z","2014-06-01T00:00:00.000Z","2014-07-01T00:00:00.000Z","2014-08-01T00:00:00.000Z","2014-09-01T00:00:00.000Z","2014-10-01T00:00:00.000Z","2014-11-01T00:00:00.000Z","2014-12-01T00:00:00.000Z","2015-01-01T00:00:00.000Z","2015-02-01T00:00:00.000Z","2015-03-01T00:00:00.000Z","2015-04-01T00:00:00.000Z","2015-05-01T00:00:00.000Z","2015-06-01T00:00:00.000Z","2015-07-01T00:00:00.000Z","2015-08-01T00:00:00.000Z","2015-09-01T00:00:00.000Z","2015-10-01T00:00:00.000Z","2015-11-01T00:00:00.000Z","2015-12-01T00:00:00.000Z","2016-01-01T00:00:00.000Z","2016-02-01T00:00:00.000Z","2016-03-01T00:00:00.000Z","2016-04-01T00:00:00.000Z","2016-05-01T00:00:00.000Z","2016-06-01T00:00:00.000Z","2016-07-01T00:00:00.000Z","2016-08-01T00:00:00.000Z","2016-09-01T00:00:00.000Z","2016-10-01T00:00:00.000Z","2016-11-01T00:00:00.000Z","2016-12-01T00:00:00.000Z","2017-01-01T00:00:00.000Z","2017-02-01T00:00:00.000Z","2017-03-01T00:00:00.000Z","2017-04-01T00:00:00.000Z","2017-05-01T00:00:00.000Z","2017-06-01T00:00:00.000Z","2017-07-01T00:00:00.000Z","2017-08-01T00:00:00.000Z","2017-09-01T00:00:00.000Z","2017-10-01T00:00:00.000Z","2017-11-01T00:00:00.000Z","2017-12-01T00:00:00.000Z","2018-01-01T00:00:00.000Z","2018-02-01T00:00:00.000Z","2018-03-01T00:00:00.000Z","2018-04-01T00:00:00.000Z","2018-05-01T00:00:00.000Z","2018-06-01T00:00:00.000Z","2018-07-01T00:00:00.000Z","2018-08-01T00:00:00.000Z","2018-09-01T00:00:00.000Z","2018-10-01T00:00:00.000Z","2018-11-01T00:00:00.000Z","2018-12-01T00:00:00.000Z","2019-01-01T00:00:00.000Z","2019-02-01T00:00:00.000Z","2019-03-01T00:00:00.000Z","2019-04-01T00:00:00.000Z","2019-05-01T00:00:00.000Z","2019-06-01T00:00:00.000Z","2019-07-01T00:00:00.000Z","2019-08-01T00:00:00.000Z","2019-09-01T00:00:00.000Z","2019-10-01T00:00:00.000Z"],[1167,1060,1218,1254,1320,1287,1275,1361,1262,1443,1336,1444,1192,1080,1333,1349,1395,1372,1396,1346,1304,1447,1417,1385,1434,1232,1229,1307,1276,1327,1281,1318,1285,1356,1519,1230,1325,1036,1275,1140,1297,1331,1304,1266,1244,1398,1270,1196,1207,1024,1182,1193,1187,1153,1134,1259,1153,1302,1203,1142,984,882,1059,1067,1283,1192,1205,1092,1082,1299,1128,1002,998,950,944,902,977,1003,1026,1055,966,1176,1037,924,1022,860,1075,1030,1051,1127,1029,1007,1060,1070,1059,1026,936,880,1061,1042,1107,1033,1035,1137,1038,1258,1088,1117,1031,880,985,1123,1130,1113,1129,1131,1079,1076,1108,972,987,942,1051,1074,1160,1066,1155,1152,1108,1283,1123,1111,1107,1004,1133,1164,1154,1258,1251,1243,1228,1285,1226,1207,1162,1089,1169,1076,1113,1213,1126,1219,1141,1355,1080,1158,985,886,1028,962,1117,1028,1047,991,1088,1141,1102,1101,1125,912,998,919,1048,1008,1064,987,957,1091,1025,1062,930,764,870,931,1029,1007,999,908,807,936]]},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
+<div id="htmlwidget-5b35824cd093ab2479d0" style="width:100%;height:200px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b35824cd093ab2479d0">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-11.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
 
-- The dygraphs package is pretty neat, it comes with the caveat that your data must be an xts 
-  object. It's trivial to get your data in that format, but it's just an extra step you will 
-  need to remember.
+- TODO
   
 &lt;!-- ------------------------------------------------------------------------------------------- --&gt;
 
@@ -333,12 +323,12 @@ class: split-33 with-thick-border
 load('data/cdc500cities.Rdata')
 cdc = cdc %&gt;% mutate(Location = paste0(PlaceName, ', ', StateAbbr))
 hchart(cdc, type = 'scatter',
-       hcaes(x = DIABETES_CrudePrev, y = OBESITY_CrudePrev, group = Location)) %&gt;%
+       hcaes(x = DIABETES_AdjPrev, y = OBESITY_AdjPrev, group = Location)) %&gt;%
   hc_legend(enabled = FALSE)
 ```
 
-<div id="htmlwidget-525d91b54b53376c21d4" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-525d91b54b53376c21d4">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-13.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f414297e79fb0c1a4995" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f414297e79fb0c1a4995">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-13.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -376,8 +366,8 @@ y = x %&gt;% filter(COLLISIONTYPE %in% c('Pedestrian', 'Cycles')) %&gt;%
 hchart(y, type = 'column', hcaes(x = INCYEAR, y = CNT, group = COLLISIONTYPE))
 ```
 
-<div id="htmlwidget-5dc3238d935898c39510" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5dc3238d935898c39510">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-15.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c7bedea25f1badf50adf" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c7bedea25f1badf50adf">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-15.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -409,8 +399,8 @@ billboarder() %&gt;% bb_barchart(data = y, stacked = T) %&gt;%
   bb_color(palette = c('#E58606','#5D69B1','#52BCA3','#99C945','#CC61B0'))
 ```
 
-<div id="htmlwidget-99c3c9f19add7114dad1" style="width:100%;height:250px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-99c3c9f19add7114dad1">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"x":"bb-x","json":{"bb-x":[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],"Fatality Collision":[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21],"Injury Collision":[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],"Property Damage Only Collision":[8203,10665,10838,10439,9893,8356,7563,7820,7440,7287,8351,9243,7945,7452,7060,5122],"Serious Injury Collision":[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],"Unknown":[3336,667,279,367,266,1317,953,1345,1630,1991,1182,1105,2051,1417,1591,1439]},"type":"bar","groups":[["Fatality Collision","Injury Collision","Property Damage Only Collision","Serious Injury Collision","Unknown"]]},"bar":[],"axis":{"x":{"type":"category"},"rotated":false},"color":{"pattern":["#E58606","#5D69B1","#52BCA3","#99C945","#CC61B0"]}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a0632db6a0c775240883" style="width:100%;height:250px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a0632db6a0c775240883">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"x":"bb-x","json":{"bb-x":[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],"Fatality Collision":[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21],"Injury Collision":[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],"Property Damage Only Collision":[8203,10665,10838,10439,9893,8356,7563,7820,7440,7287,8351,9243,7945,7452,7060,5122],"Serious Injury Collision":[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],"Unknown":[3336,667,279,367,266,1317,953,1345,1630,1991,1182,1105,2051,1417,1591,1439]},"type":"bar","groups":[["Fatality Collision","Injury Collision","Property Damage Only Collision","Serious Injury Collision","Unknown"]]},"bar":[],"axis":{"x":{"type":"category"},"rotated":false},"color":{"pattern":["#E58606","#5D69B1","#52BCA3","#99C945","#CC61B0"]}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -431,7 +421,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Pie or donut charts are not as bad as some people would have you believe
-  * Use `billboarder::bb_piechart()`
+  * Use `billboarder::bb_piechart()` to create a pie chart
   * Change legend position with `billboarder::bb_legend()`
 
 ```r
@@ -441,8 +431,8 @@ y = x %&gt;% filter(COLLISIONTYPE %in% c('Pedestrian', 'Cycles')) %&gt;%
 billboarder() %&gt;% bb_piechart(y) %&gt;% bb_legend(position = 'right')
 ```
 
-<div id="htmlwidget-09e5145f504bfef653ab" style="width:95%;height:300px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-09e5145f504bfef653ab">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Fatality Collision":[148],"Injury Collision":[10392],"Property Damage Only Collision":[1307],"Serious Injury Collision":[1235]},"type":"pie"},"pie":[],"legend":{"position":"right"}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dd7dc0e2a767f96d4260" style="width:95%;height:300px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dd7dc0e2a767f96d4260">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Fatality Collision":[148],"Injury Collision":[10392],"Property Damage Only Collision":[1307],"Serious Injury Collision":[1235]},"type":"pie"},"pie":[],"legend":{"position":"right"}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -462,19 +452,34 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * Consider using a donut chart
+  * If you or your audience has an aversion to pie charts, consider using a donut chart
+  * Use `billboarder::bb_donutchart()` to create a donut chart
 
 ```r
 billboarder() %&gt;% bb_donutchart(y) %&gt;% bb_legend(position = 'right')
 ```
 
-<div id="htmlwidget-5dd794215dbbcfd45de5" style="width:95%;height:350px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5dd794215dbbcfd45de5">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Fatality Collision":[148],"Injury Collision":[10392],"Property Damage Only Collision":[1307],"Serious Injury Collision":[1235]},"type":"donut"},"donut":[],"legend":{"position":"right"}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6c13a2c4cd2c1f8b3d5b" style="width:95%;height:350px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6c13a2c4cd2c1f8b3d5b">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Fatality Collision":[148],"Injury Collision":[10392],"Property Damage Only Collision":[1307],"Serious Injury Collision":[1235]},"type":"donut"},"donut":[],"legend":{"position":"right"}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
 
 - TODO
+
+&lt;!-- ADVANCED CHARTS --------------------------------------------------------------------------- --&gt;
+
+---
+
+class: split-70 hide-slide-number
+background-image: url('images/leaves.jpg')
+background-size: cover
+
+.column.slide-in-left[
+.sliderbox.vmiddle.shade_main.center.content[
+  # Advanced charts]]
+.column[
+]
 
 &lt;!-- ------------------------------------------------------------------------------------------- --&gt;
 
@@ -497,8 +502,8 @@ y = x %&gt;% group_by(INCDATE) %&gt;% summarise(CNT = n())
 hchart(y$CNT, type = 'histogram', name = 'Daily Collisions', color = '#669900')
 ```
 
-<div id="htmlwidget-8991c284d240177877e3" style="width:100%;height:150px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8991c284d240177877e3">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-23.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-aa5750a831a1dc57f76f" style="width:100%;height:150px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aa5750a831a1dc57f76f">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-23.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 
 
 ```r
@@ -506,8 +511,8 @@ hchart(hist(y$CNT, breaks = 30, plot = F), type = 'histogram', name = 'Daily Col
        color = '#669900')
 ```
 
-<div id="htmlwidget-16ff4ecd18473a72f409" style="width:100%;height:150px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-16ff4ecd18473a72f409">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-25.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2329a4034bd60cd6a76f" style="width:100%;height:150px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2329a4034bd60cd6a76f">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-25.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -533,8 +538,8 @@ class: split-33 with-thick-border
 hchart(density(y$CNT), type = 'area', name = 'Daily Collisions', color = '#669900')
 ```
 
-<div id="htmlwidget-01a2b37f351f7abba609" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-01a2b37f351f7abba609">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-27.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6e36f1aaea0e50795401" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6e36f1aaea0e50795401">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-27.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -555,7 +560,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Boxplots are useful for understanding distributions in data
-  * Use the shortcut `highcharter::hcboxplot`
+  * The shortcut `highcharter::hcboxplot` automatically provides a tooltip displaying distribution characteristics
 
 ```r
 y = x %&gt;% mutate(INCMONTH = month(INCDATE, label = T), INCYEAR = year(INCDATE)) %&gt;% 
@@ -563,8 +568,8 @@ y = x %&gt;% mutate(INCMONTH = month(INCDATE, label = T), INCYEAR = year(INCDATE
 hcboxplot(x = y$CNT, var = y$INCMONTH, outliers = F, name = 'Boxplot', color = '#669900')
 ```
 
-<div id="htmlwidget-0133ae4378857181e66a" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0133ae4378857181e66a">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-29.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2b22cf97991b07706cb6" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b22cf97991b07706cb6">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-29.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -597,8 +602,8 @@ hcboxplot(x = y$CNT, var = y$INCMONTH, outliers = F, name = 'Boxplot', color = '
                   marker = list(radius = 3))
 ```
 
-<div id="htmlwidget-33710ecbd00f290bf372" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-33710ecbd00f290bf372">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-31.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-339701f05f3754ff97e2" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-339701f05f3754ff97e2">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-31.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -633,8 +638,8 @@ y = x %&gt;%
 hchart(y, 'heatmap', hcaes(x = INCHOUR, y = INCMONTH, value = CNT))
 ```
 
-<div id="htmlwidget-d06d1048712d4e5cc874" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d06d1048712d4e5cc874">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-33.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-33756ba7a72a104f013f" style="width:100%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33756ba7a72a104f013f">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-33.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -657,7 +662,7 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * Use a short Javascript snippet to format the tooltip ()
+  * Use a short Javascript snippet to format the tooltip
   * Using `hc_colorAxis` we can modify the color pallete
 
 ```r
@@ -674,8 +679,8 @@ hchart(y, 'heatmap', hcaes(x = INCHOUR, y = INCMONTH, value = CNT)) %&gt;%
   hc_legend(layout = 'vertical', verticalAlign = 'top', align = 'right')
 ```
 
-<div id="htmlwidget-0261a941394ff5e2def0" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0261a941394ff5e2def0">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-35.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2aafefabf828e860fbd5" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2aafefabf828e860fbd5">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-35.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -711,8 +716,8 @@ y = x %&gt;% mutate(Year = year(INCDATE)) %&gt;%
 datatable(y, rownames = FALSE, options = list(pageLength = 5, scrollY = '200px'))
 ```
 
-<div id="htmlwidget-5d5ee2fa029fa6254d33" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5d5ee2fa029fa6254d33">{"x":{"filter":"none","data":[[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Injuries<\/th>\n      <th>Serious Injuries<\/th>\n      <th>Fatalities<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollY":"200px","columnDefs":[{"className":"dt-right","targets":[0,1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c1d4a8ad42cb291fca8e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1d4a8ad42cb291fca8e">{"x":{"filter":"none","data":[[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Injuries<\/th>\n      <th>Serious Injuries<\/th>\n      <th>Fatalities<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollY":"200px","columnDefs":[{"className":"dt-right","targets":[0,1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -742,8 +747,8 @@ datatable(y, rownames = FALSE, class = 'compact stripe',
   formatStyle('Fatalities', backgroundColor = styleInterval(breaks, cols))
 ```
 
-<div id="htmlwidget-2cebf61b0dd25b90c22a" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2cebf61b0dd25b90c22a">{"x":{"filter":"none","data":[[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21]],"container":"<table class=\"compact stripe\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Injuries<\/th>\n      <th>Serious Injuries<\/th>\n      <th>Fatalities<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[0,1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'background-color':isNaN(parseFloat(value)) ? '' : value <= 13 ? \"#FCFDBFFF\" : value <= 14 ? \"#FCF1B3FF\" : value <= 14.75 ? \"#FDE4A6FF\" : value <= 17 ? \"#FED89AFF\" : value <= 17 ? \"#FECC8FFF\" : value <= 17.5 ? \"#FEC084FF\" : value <= 18.5 ? \"#FEB37BFF\" : value <= 20 ? \"#FEA772FF\" : value <= 20 ? \"#FD9A6AFF\" : value <= 20.5 ? \"#FC8D64FF\" : value <= 21 ? \"#FA815FFF\" : value <= 21 ? \"#F8745CFF\" : value <= 22.5 ? \"#F4685CFF\" : value <= 23.5 ? \"#EF5C5EFF\" : value <= 24 ? \"#E85362FF\" : value <= 24 ? \"#DF4B68FF\" : value <= 27 ? \"#D6456CFF\" : value <= 29 ? \"#CC3F71FF\" : value <= 31 ? \"#C03A76FF\" : \"#B63679FF\"});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-6ff509a4cbd803be03a9" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ff509a4cbd803be03a9">{"x":{"filter":"none","data":[[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],[3637,4450,4350,4017,3767,3378,3245,3099,3467,3290,3490,3752,3714,3419,3358,2453],[221,206,293,245,193,200,179,142,175,166,172,143,167,167,173,146],[30,28,34,14,20,24,18,10,20,23,17,17,24,21,14,21]],"container":"<table class=\"compact stripe\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Injuries<\/th>\n      <th>Serious Injuries<\/th>\n      <th>Fatalities<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[0,1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'background-color':isNaN(parseFloat(value)) ? '' : value <= 13 ? \"#FCFDBFFF\" : value <= 14 ? \"#FCF1B3FF\" : value <= 14.75 ? \"#FDE4A6FF\" : value <= 17 ? \"#FED89AFF\" : value <= 17 ? \"#FECC8FFF\" : value <= 17.5 ? \"#FEC084FF\" : value <= 18.5 ? \"#FEB37BFF\" : value <= 20 ? \"#FEA772FF\" : value <= 20 ? \"#FD9A6AFF\" : value <= 20.5 ? \"#FC8D64FF\" : value <= 21 ? \"#FA815FFF\" : value <= 21 ? \"#F8745CFF\" : value <= 22.5 ? \"#F4685CFF\" : value <= 23.5 ? \"#EF5C5EFF\" : value <= 24 ? \"#E85362FF\" : value <= 24 ? \"#DF4B68FF\" : value <= 27 ? \"#D6456CFF\" : value <= 29 ? \"#CC3F71FF\" : value <= 31 ? \"#C03A76FF\" : \"#B63679FF\"});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -795,8 +800,8 @@ streamgraph(data = y, key = LOCATION, value = CNT, date = INCDATE) %&gt;%
   sg_fill_manual(values = cols)
 ```
 
-<div id="htmlwidget-c7b61ca9f45de0721117" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c7b61ca9f45de0721117">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-40.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c1a1d3959b78ced78ee1" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1a1d3959b78ced78ee1">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-40.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -832,16 +837,16 @@ class: split-33 with-thick-border
 billboarder() %&gt;% bb_gaugechart(value = 95)
 ```
 
-<div id="htmlwidget-da69315afd5137c86f7f" style="width:100%;height:150px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-da69315afd5137c86f7f">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Value":[95]},"type":"gauge"},"gauge":[],"color":{"pattern":["#FF0000","#F97600","#F6C600","#60B044"],"threshold":{"values":[30,60,90,100]}}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8dff2e9985b89240c4f4" style="width:100%;height:150px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8dff2e9985b89240c4f4">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Value":[95]},"type":"gauge"},"gauge":[],"color":{"pattern":["#FF0000","#F97600","#F6C600","#60B044"],"threshold":{"values":[30,60,90,100]}}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 
 
 ```r
 billboarder() %&gt;% bb_gaugechart(value = 25)
 ```
 
-<div id="htmlwidget-c6edf45897d97870e188" style="width:100%;height:150px;" class="billboarder html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c6edf45897d97870e188">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Value":[25]},"type":"gauge"},"gauge":[],"color":{"pattern":["#FF0000","#F97600","#F6C600","#60B044"],"threshold":{"values":[30,60,90,100]}}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b974751026d5a596c59f" style="width:100%;height:150px;" class="billboarder html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b974751026d5a596c59f">{"x":{"bb_opts":{"interaction":{"inputType":{"touch":false}},"data":{"json":{"Value":[25]},"type":"gauge"},"gauge":[],"color":{"pattern":["#FF0000","#F97600","#F6C600","#60B044"],"threshold":{"values":[30,60,90,100]}}},"bb_empty":{"data":{"json":[]},"axis":{"x":{"show":false},"y":{"show":false}},"grid":{"y":{"lines":[{"value":0.5,"text":"No data","position":"middle","class":"empty"}]}},"customstyle":{"custom_style":".bb-ygrid-line.empty line{stroke: transparent;} .bb-ygrid-line.empty text{font-size: 200%;}"}},"data":null},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -877,8 +882,8 @@ leaflet() %&gt;%
                    label = y$INCDATE, clusterOptions = markerClusterOptions())
 ```
 
-<div id="htmlwidget-3736421f1e50fb839d81" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3736421f1e50fb839d81">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-46.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cb32e72d9f60e352bb3d" style="width:100%;height:250px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb32e72d9f60e352bb3d">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-46.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ???
@@ -902,8 +907,34 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * TODO
+  * Pass a `princomp` object to `highcharter::hchart()` to visualizes the results of PCA
 
+```r
+load('data/cdc500cities.Rdata')
+cdc = cdc %&gt;% mutate(Location = paste0(PlaceName, ', ', StateAbbr)) %&gt;% as_tibble() %&gt;% 
+  select(Location, ends_with('AdjPrev')) %&gt;% select(-PAPTEST_AdjPrev)
+cdc = data.frame(cdc[, 2:ncol(cdc)], row.names = cdc$Location)
+pr = princomp(cdc, cor = TRUE)
+hchart(pr)
+```
+  * See next slide!
+]]
+
+&lt;!-- ------------------------------------------------------------------------------------------- --&gt;
+
+---
+
+layout: false
+class: split-33 with-thick-border
+
+.column.bg-main1[.content[
+  # Other
+]]
+
+.column[.content[
+# 
+<div id="htmlwidget-db0510836ac140cf91c9" style="width:100%;height:650px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-db0510836ac140cf91c9">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-48.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 ]]
 
 &lt;!-- INTERACTIVE CHARTS IN SHINY ---------------------------------------------------------------- --&gt;
@@ -1013,8 +1044,6 @@ class: bg-main2
   * Dygraphs package documentation and demos: [.yellow[rstudio.github.io/dygraphs/]](https://rstudio.github.io/dygraphs/)
   * DT package documentation and demos: [.yellow[rstudio.github.io/DT/]](https://rstudio.github.io/DT/)
   * Leaflet package documentation and demos: [.yellow[rstudio.github.io/leaflet/]](https://rstudio.github.io/leaflet/)
-  
---
 
 &lt;!-- ------------------------------------------------------------------------------------------- --&gt;
 

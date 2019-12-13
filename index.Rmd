@@ -129,7 +129,7 @@ class: split-33 with-thick-border
 ```{r, echo = TRUE, cache = TRUE, message = FALSE}
 src = 'https://opendata.arcgis.com/datasets/5b5c745e0f1f48e7a53acec63a0022ab_0.csv'
 x = readr::read_csv(src) %>%
-      filter(INCDATE >= '2004-01-01', INCDATE <= '2019-10-31')
+  filter(INCDATE >= '2004-01-01', INCDATE <= '2019-10-31')
 x
 ```
 ]]
@@ -170,7 +170,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Time series charts are good for understanding trends for one or more variables over time
-  * There are several libraries that plot time-series data well including: `highcharter`, `billboarder` and `dygraphs`
+  * There are several libraries that plot time-series data well including: `highcharter` and `billboarder`
   * Use `highcharter::hchart()` similar to `ggplot2::qplot()`
   * Use `highcharter::hcaes()` much like `ggplot2::aes()`
 ```{r, echo = TRUE, eval = FALSE}
@@ -262,22 +262,19 @@ billboarder(height = 200, width = '100%') %>% bb_linechart(data = y) %>%
 
 ```{r, echo = TRUE, eval = FALSE}
 y = xts::xts(x = y$CNT, order.by = y$INCMONTH)
-names(y) = c('Collisions')
-dygraph(y) %>% dyRangeSelector() %>% dyLegend(show = "follow")
+hchart(y, name = 'Collisions')
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
 y = xts::xts(x = y$CNT, order.by = y$INCMONTH)
-names(y) = c('Collisions')
-dygraph(y, height = 200, width = '100%') %>% dyRangeSelector() %>% dyLegend(show = "follow")
+h = hchart(y, name = 'Collisions')
+frameWidget(h, height = 200)
 ```
 ]]
 
 ???
 
-- The dygraphs package is pretty neat, it comes with the caveat that your data must be an xts 
-  object. It's trivial to get your data in that format, but it's just an extra step you will 
-  need to remember.
+- TODO
   
 <!-- ------------------------------------------------------------------------------------------- -->
 
@@ -298,7 +295,7 @@ class: split-33 with-thick-border
 load('data/cdc500cities.Rdata')
 cdc = cdc %>% mutate(Location = paste0(PlaceName, ', ', StateAbbr))
 hchart(cdc, type = 'scatter',
-       hcaes(x = DIABETES_CrudePrev, y = OBESITY_CrudePrev, group = Location)) %>%
+       hcaes(x = DIABETES_AdjPrev, y = OBESITY_AdjPrev, group = Location)) %>%
   hc_legend(enabled = FALSE)
 ```
 
@@ -307,9 +304,9 @@ library(sf)
 load('data/cdc500cities.Rdata')
 cdc = cdc %>% mutate(Location = paste0(PlaceName, ', ', StateAbbr))
 h = hchart(cdc, type = 'scatter',
-           hcaes(x = DIABETES_CrudePrev, y = OBESITY_CrudePrev, group = Location)) %>%
+           hcaes(x = DIABETES_AdjPrev, y = OBESITY_AdjPrev, group = Location)) %>%
   hc_legend(enabled = FALSE)
-frameWidget(h, height = 300)
+frameWidget(h, height = 350)
 ```
 ]]
 
@@ -352,7 +349,7 @@ y = x %>% filter(COLLISIONTYPE %in% c('Pedestrian', 'Cycles')) %>%
   group_by(INCYEAR = year(INCDATE), COLLISIONTYPE) %>%
   summarise(CNT = n())
 h = hchart(y, type = 'column', hcaes(x = INCYEAR, y = CNT, group = COLLISIONTYPE))
-frameWidget(h, height = 250)
+frameWidget(h, height = 300)
 ```
 ]]
 
@@ -411,7 +408,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Pie or donut charts are not as bad as some people would have you believe
-  * Use `billboarder::bb_piechart()`
+  * Use `billboarder::bb_piechart()` to create a pie chart
   * Change legend position with `billboarder::bb_legend()`
 ```{r, echo = TRUE, eval = FALSE}
 y = x %>% filter(COLLISIONTYPE %in% c('Pedestrian', 'Cycles')) %>% 
@@ -445,7 +442,8 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * Consider using a donut chart
+  * If you or your audience has an aversion to pie charts, consider using a donut chart
+  * Use `billboarder::bb_donutchart()` to create a donut chart
 ```{r, echo = TRUE, eval = FALSE}
 billboarder() %>% bb_donutchart(y) %>% bb_legend(position = 'right')
 ```
@@ -458,6 +456,20 @@ billboarder(height = 350) %>% bb_donutchart(y) %>% bb_legend(position = 'right')
 ???
 
 - TODO
+
+<!-- ADVANCED CHARTS --------------------------------------------------------------------------- -->
+
+---
+
+class: split-70 hide-slide-number
+background-image: url('images/leaves.jpg')
+background-size: cover
+
+.column.slide-in-left[
+.sliderbox.vmiddle.shade_main.center.content[
+  # Advanced charts]]
+.column[
+]
 
 <!-- ------------------------------------------------------------------------------------------- -->
 
@@ -543,7 +555,7 @@ class: split-33 with-thick-border
 .column[.content[
 # 
   * Boxplots are useful for understanding distributions in data
-  * Use the shortcut `highcharter::hcboxplot`
+  * The shortcut `highcharter::hcboxplot` automatically provides a tooltip displaying distribution characteristics
 ```{r, echo = TRUE, eval = FALSE}
 y = x %>% mutate(INCMONTH = month(INCDATE, label = T), INCYEAR = year(INCDATE)) %>% 
   group_by(INCYEAR, INCMONTH) %>% summarise(CNT = n())
@@ -554,7 +566,7 @@ hcboxplot(x = y$CNT, var = y$INCMONTH, outliers = F, name = 'Boxplot', color = '
 y = x %>% mutate(INCMONTH = month(INCDATE, label = TRUE), INCYEAR = year(INCDATE)) %>% 
   group_by(INCYEAR, INCMONTH) %>% summarise(CNT = n())
 h = hcboxplot(x = y$CNT, var = y$INCMONTH, outliers = FALSE, name = 'Boxplot', color = '#669900')
-frameWidget(h, height = 400)
+frameWidget(h, height = 350)
 ```
 ]]
 
@@ -663,7 +675,7 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * Use a short Javascript snippet to format the tooltip ()
+  * Use a short Javascript snippet to format the tooltip
   * Using `hc_colorAxis` we can modify the color pallete
 ```{r, echo = TRUE, eval = FALSE}
 tooltip_formatter = JS("function() {
@@ -930,32 +942,47 @@ class: split-33 with-thick-border
 
 .column[.content[
 # 
-  * TODO
-```{r, echo = FALSE, eval = TRUE, warning = FALSE}
-# y = x %>%
-#   mutate(INCDTTM = parse_date_time(INCDTTM, orders = c('%m/%d/%Y %H:%M:%S %p'),
-#                                    tz = 'America/Los_Angeles'),
-#          INCHOUR = hour(INCDTTM)) %>%
-#   filter(!is.na(INCHOUR)) %>% 
-#   group_by(INCDATE, INCHOUR) %>%
-#   summarize(CNT = n()) %>% ungroup() %>% 
-#   group_by(INCHOUR) %>% 
-#   summarise(MIN = min(CNT), MEAN = mean(CNT), MAX = max(CNT))
+  * Pass a `princomp` object to `highcharter::hchart()` to visualizes the results of PCA
+```{r, echo = TRUE, eval = FALSE, message = FALSE}
+load('data/cdc500cities.Rdata')
+cdc = cdc %>% mutate(Location = paste0(PlaceName, ', ', StateAbbr)) %>% as_tibble() %>% 
+  select(Location, ends_with('AdjPrev')) %>% select(-PAPTEST_AdjPrev)
+cdc = data.frame(cdc[, 2:ncol(cdc)], row.names = cdc$Location)
+pr = princomp(cdc, cor = TRUE)
+hchart(pr)
+```
+  * See next slide!
+]]
+
+<!-- ------------------------------------------------------------------------------------------- -->
+
+---
+
+layout: false
+class: split-33 with-thick-border
+
+.column.bg-main1[.content[
+  # Other
+]]
+
+.column[.content[
 # 
-# tltip <- tooltip_table(c("Min", "Mean", "Max"), sprintf("{point.%s}", c("MIN", "MEAN", "MAX")))
-# 
-# hchart(y, type = "columnrange",
-#        hcaes(x = INCHOUR, low = MIN, high = MEAN,
-#              color = MEAN)) %>%
-#   hc_chart(polar = TRUE) %>%
-#   hc_yAxis(max = 3, min = 1, labels = list(format = "{value}"),
-#             showFirstLabel = FALSE) %>%
-#   hc_xAxis(
-#     title = list(text = ""), gridLineWidth = 0.5,
-#     labels = list(format = "{value}:00")) %>%
-#   hc_tooltip(useHTML = TRUE, pointFormat = tltip,
-#              headerFormat = as.character(tags$small("{point.x}:00")))
-# frameWidget(l, height = 250)
+```{r, echo = FALSE, eval = TRUE, message = FALSE}
+library(sf)
+load('data/cdc500cities.Rdata')
+cdc = cdc %>% mutate(Location = paste0(PlaceName, ', ', StateAbbr)) %>% as_tibble() %>% 
+  select(Location, ends_with('AdjPrev')) %>% select(-PAPTEST_AdjPrev)
+cdc = data.frame(cdc[, 2:ncol(cdc)], row.names = cdc$Location)
+names(cdc) = c('Limited healthcare access', 'Arthritis', 'Binge drinking', 'High blood pressure',
+               'High blood pressure (taking medication)', 'Cancer', 'Asthma', 'Heart disease', 
+               'Routine checkups', 'Cholesterol screening', 'Colon screening', 'COPD',
+               'Preventative services (men)', 'Preventative services (women)', 'Smoking',
+               'Dental visits', 'Diabetes', 'High cholesterol', 'Kidney disease',
+               'Sedentary lifestyle', 'Mammograms', 'Mental illness', 'Obesity', 'Poor physical health',
+               'Sleep disorder', 'Stroke', 'Teeth loss')
+pr = princomp(cdc, cor = TRUE)
+h = hchart(pr)
+frameWidget(h, height = 650)
 ```
 ]]
 
@@ -1065,8 +1092,6 @@ class: bg-main2
   * Dygraphs package documentation and demos: [.yellow[rstudio.github.io/dygraphs/]](https://rstudio.github.io/dygraphs/)
   * DT package documentation and demos: [.yellow[rstudio.github.io/DT/]](https://rstudio.github.io/DT/)
   * Leaflet package documentation and demos: [.yellow[rstudio.github.io/leaflet/]](https://rstudio.github.io/leaflet/)
-  
---
 
 <!-- ------------------------------------------------------------------------------------------- -->
 
